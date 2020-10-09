@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    实现自动装配
+        bean标签中的autowire属性
+        autowire中常用的两个值,
+        byName根据属性名称进行注入，要注入的bean的id值和属性名称要一样
+        byType根据属性类型进行注入
+    -->
+    <bean id="emp" class="com.yang.autowire.Emp" autowire="byType">
+        <!--        <property name="dept" ref="dept"/>-->
+    </bean>
+    <bean id="dept" class="com.yang.autowire.Dept"/>
+</beans>

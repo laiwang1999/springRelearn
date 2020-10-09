@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--内部bean-->
+    <bean id="emp" class="com.yang.bean.Emp">
+        <!--        先设置两个普通属性-->
+        <property name="ename" value="ya"/>
+        <property name="gender" value="男"/>
+        <!--        对象类型属性-->
+<!--        级联赋值-->
+        <property name="department" ref="department"/>
+        <property name="department.dName" value="cai"/>
+    </bean>
+    <bean id="department" class="com.yang.bean.Department">
+        <property name="dName" value="财务部"/>
+    </bean>
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置User类对象创建-->
+    <bean id="user" class="com.yang.User"/>
+    <!--    set方法注入属性-->
+    <bean id="book" class="com.yang.Book">
+        <!--
+        使用property完成属性注入
+        name属性代表字段名称
+        value为注入的值
+        -->
+        <property name="bname" value="天龙八部"/>
+        <!--        null值-->
+        <!--        属性值包含特殊符号
+                    1.转义
+                    2，把特殊符号写到CDATE中
+        -->
+        <property name="author">
+            <value>
+                <![CDATA[
+                    <<南京>>
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="orders" class="com.yang.Orders">
+        <constructor-arg name="name" value="abc"/>
+        <constructor-arg name="address" value="123"/>
+    </bean>
+
+
+</beans>

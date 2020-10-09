@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans
+               http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/util
+                http://www.springframework.org/schema/util/spring-util.xsd
+">
+    <!--集合类型属性注入-->
+    <bean id="student" class="com.yang.collectionType.Student">
+        <!--        数组类型-->
+        <property name="courses">
+            <array>
+                <value>java</value>
+                <value>数据库</value>
+            </array>
+        </property>
+        <!--        list类型-->
+        <property name="list">
+            <list>
+                <value>张三</value>
+                <value>小三</value>
+            </list>
+        </property>
+        <!--        Map类型-->
+        <property name="maps">
+            <map>
+                <entry key="Java" value="java"/>
+                <entry key="PHP" value="php"/>
+            </map>
+        </property>
+        <!--        set-->
+        <property name="set">
+            <set>
+                <value>123</value>
+                <value>mysql</value>
+            </set>
+        </property>
+        <!--        注入List集合，值是对象-->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="course1" class="com.yang.collectionType.Course">
+        <property name="cname" value="Spring5框架"/>
+    </bean>
+    <bean id="course2" class="com.yang.collectionType.Course">
+        <property name="cname" value="MyBatis框架"/>
+    </bean>
+
+    <util:list id="bookList">
+        <value>三国</value>
+        <value>水浒</value>
+    </util:list>
+    <bean id="book" class="com.yang.collectionType.Book" scope="prototype">
+        <property name="list" ref="bookList"/>
+    </bean>
+
+    <!--    <bean id="myBean" class="com.yang.factorybean.MyBean"/>-->
+
+    <bean id="orders" class="com.yang.bean.Orders" init-method="initMethod" destroy-method="destroyMethod">
+        <property name="oname" value="菜单"/>
+    </bean>
+    <!--    配置后置处理器-->
+    <bean id="myBeanPost" class="com.yang.bean.MyBeanPost"/>
+</beans>
